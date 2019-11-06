@@ -6,7 +6,7 @@ class Application
     resp = Rack::Response.new 
     req = Rack::Request.new(env)
     
-    if req.path == "/items/"
+    if req.path.match(/items/)
       item.name = req.path.split("/items/").last 
       item = @@items.find {|i| i.price == item.price}
       resp.write "#{item.price}"
