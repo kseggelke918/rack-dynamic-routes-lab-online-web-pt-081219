@@ -7,10 +7,9 @@ class Application
     req = Rack::Request.new(env)
     
     if req.path == "/items/"
-      item_name = req.path.split("/items/").last 
-      item = req.params["item"]
-      if @@item.include?(item)
-        resp.write "#{item.price}"
+      item.name = req.path.split("/items/").last 
+      item = @@items.find {|i| i.price == item.price}
+      resp.write "#{item.price}"
       else 
         resp.write "error code"
         resp.status = 400 
