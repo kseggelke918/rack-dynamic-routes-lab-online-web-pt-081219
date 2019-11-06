@@ -8,7 +8,7 @@ class Application
     
     if req.path.match(/items/)
       item.name = req.path.split("/items/").last 
-      item = @@items.find {|i| i.price == item.price}
+      item = @@items.find {|i| i.name == item.name}
       resp.write "#{item.price}"
     else 
       resp.status = 404
